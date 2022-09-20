@@ -8,6 +8,7 @@ import Script5 from "../4adfea35-fb5c-4f64-bb5e-c7ebfa350868/src/item"
 import Script6 from "../80d9cb1c-2fcf-4585-8e19-e2d5621fd54d/src/item"
 import Script7 from "../a747f104-5434-42a8-a543-8739c24cf253/src/item"
 import Script8 from "../b79a150e-5914-4fdf-a6b4-c7ff0c6833dd/src/item"
+import {object} from './applyVisibility'
 
 const _scene = new Entity('_scene')
 engine.addEntity(_scene)
@@ -89,6 +90,7 @@ const transform7 = new Transform({
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(1, 1, 1)
 })
+
 curvedStoneBrickWall.addComponentOrReplace(transform7)
 const gltfShape3 = new GLTFShape("0c52bf55-7b0f-4eca-9b3c-b1fbb81c7219/Module_Stone_Curve_02/Module_Stone_Curve_02.glb")
 gltfShape3.withCollisions = true
@@ -304,6 +306,8 @@ gltfShape11.isPointerBlocker = true
 gltfShape11.visible = true
 archwayOfHonesty.addComponentOrReplace(gltfShape11)
 
+//Dragon 
+
 const tianlongDragonStatue = new Entity('tianlongDragonStatue')
 engine.addEntity(tianlongDragonStatue)
 tianlongDragonStatue.setParent(_scene)
@@ -319,6 +323,24 @@ gltfShape12.isPointerBlocker = true
 gltfShape12.visible = true
 tianlongDragonStatue.addComponentOrReplace(gltfShape12)
 
+//cost Dragon = lazy-loading()
+
+//lazy-loading 
+
+
+export class Visibility 
+{
+  update()
+  {
+    object(tianlongDragonStatue)
+
+  }
+}
+
+engine.addSystem(new Visibility ())
+
+//lazy loading 
+
 const yearOfThePigPostBanner = new Entity('yearOfThePigPostBanner')
 engine.addEntity(yearOfThePigPostBanner)
 yearOfThePigPostBanner.setParent(_scene)
@@ -333,6 +355,8 @@ gltfShape13.withCollisions = true
 gltfShape13.isPointerBlocker = true
 gltfShape13.visible = true
 yearOfThePigPostBanner.addComponentOrReplace(gltfShape13)
+
+
 
 const hardwoodRoundedBridge = new Entity('hardwoodRoundedBridge')
 engine.addEntity(hardwoodRoundedBridge)
